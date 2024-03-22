@@ -12,30 +12,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # A sample script for using an incoming webhook for Google Chat rooms.
+
+
 # [START hangouts_python_webhook]
 from json import dumps
-
 from httplib2 import Http
 
-WEBHOOK_URL = "[URL FROM WEBHOOK]"
+# Copy the webhook URL from the Chat space where the webhook is registered.
+# The values for SPACE_ID, KEY, and TOKEN are set by Chat, and are included
+# when you copy the webhook URL.
 
 def main():
     """Google Chat incoming webhook quickstart."""
-    url = WEBHOOK_URL
-    app_message = {
-        'text': 'Hello from a Python script!'}
-    message_headers = {'Content-Type': 'application/json; charset=UTF-8'}
+    url = "https://chat.googleapis.com/v1/spaces/SPACE_ID/messages?key=KEY&token=TOKEN"
+    app_message = {"text": "Hello from a Python script!"}
+    message_headers = {"Content-Type": "application/json; charset=UTF-8"}
     http_obj = Http()
     response = http_obj.request(
         uri=url,
-        method='POST',
+        method="POST",
         headers=message_headers,
         body=dumps(app_message),
     )
     print(response)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
 # [END hangouts_python_webhook]
-

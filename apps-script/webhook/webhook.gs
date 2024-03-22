@@ -14,19 +14,16 @@
  * limitations under the License.
  */
 
+
 // [START hangouts_chat_webhook]
 function webhook() {
-  const url = "https://chat.googleapis.com/v1/spaces/AAAAGCYeSRY/messages";
+  const url = "https://chat.googleapis.com/v1/spaces/SPACE_ID/messages"
   const options = {
     "method": "post",
-    "headers": {
-      "Content-Type": "application/json; charset=UTF-8"
-    },
-    "payload": JSON.stringify({
-      "text": "Hello from Apps Script!"
-    })
+    "headers": {"Content-Type": "application/json; charset=UTF-8"},
+    "payload": JSON.stringify({"text": "Hello from Apps Script!"})
   };
   const response = UrlFetchApp.fetch(url, options);
-  Logger.log(response);
+  console.log(response);
 }
 // [END hangouts_chat_webhook]
